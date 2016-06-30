@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <title>抢倒福</title>
+    <meta charset="utf-8"/>
+	<meta name="viewport" content="initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, width=device-width,target-densitydpi=device-dpi"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+     <script type="text/javascript">     /*  var uid="500000080";     var devId="d8a752b953d5a320e974c63479243d5e6f880db0";     var token_url="abcdefg";*/              var uid="",devId="";     var token=NativeObj.getToken();     var obj = eval("("+token+")");     var token_url="";     if(obj){    	 uid=obj.uid;    	 token_url="uid="+uid+"&token="+obj.token;     	 devId=obj.devId;     }     if(uid==""||uid==0){     	NativeObj.open("login")//登录     }     
+     var param;
+	    (function ($) {
+	        $.getUrlParam = function (name) {
+	            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	            var r = window.location.search.substr(1).match(reg);
+	            if (r != null) return unescape(r[2]); return null;
+	        }
+	    })(jQuery);
+	   // var lanId=$.getUrlParam("lanId");
+	   //	var uId=$.getUrlParam("uId")
+	   	var phone=$.getUrlParam("phone")
+	   	
+		function backIndexPgae(){
+			window.location.replace("../index.jsp");
+		}
+    </script>
+     <script type="text/javascript" src="../js/game.js"></script>
+    <script type="text/javascript">
+  // window.onload=function(){
+   var i = new Date().getTime() % 5;
+
+		document.write('<script type="text/javascript" src="createjs.js"><\/script>');
+
+		var isDesktop = navigator['userAgent'].match(/(ipad|iphone|ipod|android|windows phone)/i) ? false : true;
+    	var fontunit        = isDesktop ? 10 : ((window.innerWidth>window.innerHeight?window.innerHeight:window.innerWidth)/320)*10;
+    	document.write('<style type="text/css">'+
+    		'html,body {font-size:'+(fontunit<30?fontunit:'30')+'px;}'+
+    		(isDesktop?'#welcome,#GameTimeLayer,#GameLayerBG,#GameScoreLayer.SHADE{position: absolute;}':
+    		'#welcome,#GameTimeLayer,#GameLayerBG,#GameScoreLayer.SHADE{position:fixed;}@media screen and (orientation:landscape) {#landscape {display: box; display: -webkit-box; display: -moz-box; display: -ms-flexbox;}}')+
+    		'</style>');
+		//}
+		
+		$(function(){			
+			$(".close").click(function(){
+				$(".game_star,#welcome").show();
+				$("#GameScoreLayer").css({"visibility":"hidden"});
+				replayBtn()
+			})
+		})
+    </script>
+    <style type="text/css">
+    body {font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif; margin: 0; padding: 0; background:url(share_bg.jpg) repeat left top;}
+    .loading {background-image: url("download.gif");
+    	background-repeat: no-repeat;
+    	background-position: center center;
+    	background-size: auto 60%; 
+	}
+    .SHADE {top: 0; left:0; width:100%; height: 100%; bottom:0; z-index: 11;}
+    .BOX-V {box-orient: vertical;-webkit-box-orient: vertical; -moz-box-orient: vertical;-ms-flex-direction:column;}
+	.BOX-D {box-align: end; box-pack: center -webkit-box-align: end; -webkit-box-pack: center; -ms-flex-align:end; -ms-flex-pack:center;}
+	.BOX-M {box-align: center;box-pack: center; -webkit-box-align: center; -webkit-box-pack: center; -ms-flex-align:center; -ms-flex-pack:center;}
+	.BOX-S {display:block; box-flex:1; -webkit-box-flex:1; -moz-box-flex:1;-ms-flex:1;}
+	.BOX   ,.BOX-V,.BOX-D,.BOX-M, .FOOTER{display: box; display: -webkit-box; display: -moz-box; display: -ms-flexbox;}
+	.BBOX  ,.BOX,.APP-STAGE,.INSET-STAGE,.STAGE,.PAGE-STAGE,.PAGE,.PAGE-BOX,.INSET-PAGE,.FOOTER{box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
+
+    #welcome { background-color:rgba(0,0,0,.8); text-align: center; font-weight: bold; padding-bottom:26%;}
+    .welcome-bg {position:absolute;top:0;left:0;right:0;bottom:0; background-size:100% 100%; opacity: .4;}
+    #GameTimeLayer {top:1em; left: 0; width:100%; text-align: center; color:#fff; font-size: 4em; }
+    #GameLayerBG {top:0;left:0;right:0;bottom:0; background:url(game_bg.jpg) no-repeat left top; background-size:100% 100%; overflow:hidden;}
+    .GameLayer {position:absolute;bottom:0;left:0;}
+    .block {position:absolute;border-top:2px solid #e2cd56; background-repeat: no-repeat; background-position: center;}
+    .t1,.t2,.t3,.t4,.t5 { background-size:auto 100%;background-image:url(640.png);}
+    .tt1,.tt2,.tt3,.tt4,.tt5 { background-size:auto 86%;}
+    .bl {border-left:2px solid #e2cd56;}
+    @-ms-keyframes flash {
+    	0% { opacity: 1; }
+    	50% { opacity: 0; }
+    	100% { opacity: 1; }
+    }
+    @-webkit-keyframes flash {
+    	0% { opacity: 1; } 
+    	50% { opacity: 0; }
+    	100% { opacity: 1; }
+    }
+  	.flash {-webkit-animation: flash .2s 3;animation: flash .2s 3;}
+    .bad {background-color: #fff331; -webkit-animation: flash .2s 3;animation: flash .2s 3;}
+    *{-webkit-tap-highlight-color: rgba(0,0,0,0);-ms-tap-highlight-color: rgba(0,0,0,0); tap-highlight-color: rgba(0,0,0,0); -ms-user-select: none;}
+    #GameScoreLayer { font-size:1.8em;  color:#fff; text-align: center;  background:url(../images/pop_bg.png) repeat left top; }
+    .bgc1 { background:url(share_bg.jpg) ;}
+    .bgc2 { background:url(share_bg.jpg) ;}
+    .bgc3 { background:url(share_bg.jpg) ;}
+    .bgc4 { background:url(share_bg.jpg);}
+    .bgc5 { background:url(share_bg.jpg) ;}
+
+    .share-icon {width:1.7em; background-repeat:no-repeat; background-size: auto 100%;}	
+    #GameScoreLayer-btn .btn,#GameScoreLayer-share .btn { width:80%; margin:0 auto; text-align: center;font-size:1.1em; background-color:#f2d743; height:2em; line-height:2em; color:#820800; border-radius:0.5em; }
+
+    .btn:active {opacity: 0.2;}
+    #landscape {display: none;}
+.txt_pop{ background:url(../images/txt_pop.png) no-repeat left top; background-size:100% 100%; padding:8% 8% 7% 8%; text-align:center; position:relative; box-sizing:border-box;}
+	#GameScoreLayer-bast{ color:#200a00; line-height:1.8em; padding-top:3%;}
+	#GameScoreLayer-text{ text-align:left; width:96%; margin:0 auto; font-size:1em; font-weight:normal; margin-top:20%;}
+	#GameScoreBast-text{ text-align:left; width:96%; margin:0 auto; font-size:0.85em;}
+	#gameBody {position: relative; width: 100%; margin: 0 auto; height: 100%; background:url(game_bg.jpg) no-repeat left top; background-size:100% 100%;}
+.col_f30{ color:#ff3300;}
+.btn_back{display:inline-block; margin:0 auto; width:10em; height:1.7em; line-height:1.7em; font-size:2.2em; color:#fff; border-radius:0.5em; background:#c22828; margin-top:6%;}
+
+.btn_close{ position:absolute; right:0%; top:-15%; width:10%;}
+.pop_body{ position:absolute; left:4%; width:92%; top:50%;}
+
+.pic_red{ display:inline-block; width:50%; margin-top:5%;}
+.red_txt{ display:none; text-align:center; padding:5% 0; color:#200a00;}
+
+.btn_sure_01{ display:inline-block; width:52%; margin-top:8%;}
+    </style>
+
+</head>
+
+<body onLoad="init()">	
+	<script type="text/javascript">
+	window.shareData = {
+	       // "imgUrl": "",
+//	        "timeLineLink": "http://www.wenzhangku.com/weixin/xiaopingguo/",
+//	        "tTitle": "我是你的小呀元宝！",
+//	        "tContent": "我是你的小呀元宝,怎么爱你都不嫌多！"
+	    };
+		
+		function popMarginTop(){		
+			$("#GameScoreLayer .pop_body").each(function(index, element) {
+				var pHeight=$("#GameScoreLayer .pop_body").height();
+				$("#GameScoreLayer .pop_body").css({"margin-top":"-"+pHeight/2+"px"});
+			});
+		}	
+	
+	
+	if (isDesktop)
+		document.write('<div id="gameBody">');
+
+	var body, blockSize, GameLayer = [], GameLayerBG, touchArea = [], GameTimeLayer;
+	var transform, transitionDuration;
+
+	function init (argument) {
+		showWelcomeLayer();
+		body = document.getElementById('gameBody') || document.body;
+		body.style.height = window.innerHeight+'px';
+		transform = typeof(body.style.webkitTransform) != 'undefined' ? 'webkitTransform' : (typeof(body.style.msTransform) != 'undefined'?'msTransform':'transform');
+		transitionDuration = transform.replace(/ransform/g, 'ransitionDuration');
+
+		GameTimeLayer = document.getElementById('GameTimeLayer');
+		GameLayer.push( document.getElementById('GameLayer1') );
+		GameLayer[0].children = GameLayer[0].querySelectorAll('div');
+		GameLayer.push( document.getElementById( 'GameLayer2' ) );
+		GameLayer[1].children = GameLayer[1].querySelectorAll('div');
+		GameLayerBG = document.getElementById( 'GameLayerBG' );
+		if( GameLayerBG.ontouchstart === null ){
+			GameLayerBG.ontouchstart = gameTapEvent;
+		}else{
+			GameLayerBG.onmousedown = gameTapEvent;
+			document.getElementById('landscape-text').innerHTML = '点我开始玩耍';
+			document.getElementById('landscape').onclick = winOpen;
+		}
+		gameInit();  //游戏声音
+		window.addEventListener('resize', refreshSize, false);
+
+		var rtnMsg = "true";	
+				
+		setTimeout(function(){
+			if(rtnMsg == 'false'){
+				var btn = document.getElementById('ready-btn');
+				btn.className = 'btn';
+				btn.innerHTML = '您今天已经吃太多苹果啦，请明天继续！' 			
+			}else{
+				var btn = document.getElementById('ready-btn');
+				btn.className = 'btn';
+				btn.innerHTML = ' 预备，上！'
+				btn.style.backgroundColor = '#c22828';
+				btn.onclick = function(){
+					//closeWelcomeLayer();					PostDataJson("../PlayServlet?funName=initUserTimes", {"uId":uid,"phone":phone,"district":""}, function(data){						if(data.v<=0){							//alert("您的挑战次数已经用完");							btn.innerHTML = ' 挑战次数已用完'							//closeWelcomeLayer();						}else{							closeWelcomeLayer();						}					});
+				} 					
+			}
+		}, 500);
+	}
+	function winOpen() {
+		window.open(location.href+'?r='+Math.random(), 'nWin', 'height=500,width=320,toolbar=no,menubar=no,scrollbars=no');
+		var opened=window.open('about:blank','_self'); opened.opener=null; opened.close();
+	}
+	var refreshSizeTime;
+	function refreshSize(){
+		clearTimeout(refreshSizeTime);
+		refreshSizeTime = setTimeout(_refreshSize, 200);
+	}
+	function _refreshSize(){
+		countBlockSize();
+		for( var i=0; i<GameLayer.length; i++ ){
+			var box = GameLayer[i];
+			for( var j=0; j<box.children.length; j++){
+				var r = box.children[j],
+					rstyle = r.style;
+				rstyle.left = (j%4)*blockSize+'px';
+				rstyle.bottom = Math.floor(j/4)*blockSize+'px';
+				rstyle.width = blockSize+'px';
+				rstyle.height = blockSize+'px';
+			}
+		}
+		var f, a;
+		if( GameLayer[0].y > GameLayer[1].y ){
+			f = GameLayer[0];
+			a = GameLayer[1];
+		}else{
+			f = GameLayer[1];
+			a = GameLayer[0];
+		}
+		var y = ((_gameBBListIndex)%10)*blockSize;
+		f.y = y;
+		f.style[transform] = 'translate3D(0,'+f.y+'px,0)';
+
+		a.y = -blockSize*Math.floor(f.children.length/4)+y;
+		a.style[transform] = 'translate3D(0,'+a.y+'px,0)';
+
+	}
+	function countBlockSize(){
+		blockSize = body.offsetWidth/4;
+		body.style.height = window.innerHeight+'px';
+		GameLayerBG.style.height = window.innerHeight+'px';
+		touchArea[0] = window.innerHeight-blockSize*0;
+		touchArea[1] = window.innerHeight-blockSize*3;
+	}
+	var _gameBBList = [], _gameBBListIndex = 0, _gameOver = false, _gameStart = false, _gameTime, _gameTimeNum, _gameScore;
+	//游戏声音
+	function gameInit(){
+        createjs.Sound.registerSound( {src:"1.mp3", id:"err"} );
+        createjs.Sound.registerSound( {src:"2.mp3", id:"end"} );
+        createjs.Sound.registerSound( {src:"3.mp3", id:"tap"} );
+		gameRestart();
+	}
+	function gameRestart(){
+		console.log('gameRestart');
+		_gameBBList = [];
+		_gameBBListIndex = 0;
+		_gameScore = 0;
+		_gameOver = false;
+		_gameStart = false;
+		_gameTimeNum = 2000;
+		GameTimeLayer.innerHTML = creatTimeText(_gameTimeNum);
+		countBlockSize();
+		refreshGameLayer(GameLayer[0]);
+		refreshGameLayer(GameLayer[1], 1);
+	}
+	function gameStart(){
+		_gameStart = true;
+		_gameTime = setInterval(gameTime, 10);
+	}
+	//游戏结束
+	function gameOver(){
+		_gameOver = true;
+		clearInterval(_gameTime);
+		setTimeout(function(){
+			GameLayerBG.className = '';
+			showGameScoreLayer();			
+		}, 1500);
+	}
+	function gameTime(){
+		_gameTimeNum --;
+		if( _gameTimeNum <= 0){
+			GameTimeLayer.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;时间到！';
+			gameOver();
+			GameLayerBG.className += ' flash';
+			createjs.Sound.play("end");
+		}else{
+			GameTimeLayer.innerHTML = creatTimeText(_gameTimeNum);
+		}
+	}
+	function creatTimeText( n ){
+		var text = (100000+n+'').substr(-4,4);
+		text = '&nbsp;&nbsp;'+text.substr(0,2)+"'"+text.substr(2)+"''"
+		return text;
+	}
+	var _ttreg = / t{1,2}(\d+)/, _clearttClsReg = / t{1,2}\d+| bad/;
+	function refreshGameLayer( box, loop, offset ){
+		var i = Math.floor(Math.random()*1000)%4+(loop?0:4);
+		for( var j=0; j<box.children.length; j++){
+			var r = box.children[j],
+				rstyle = r.style;
+			rstyle.left = (j%4)*blockSize+'px';
+			rstyle.bottom = Math.floor(j/4)*blockSize+'px';
+			rstyle.width = blockSize+'px';
+			rstyle.height = blockSize+'px';
+			r.className = r.className.replace(_clearttClsReg, '');
+			if( i == j ){
+				_gameBBList.push( {cell:i%4, id:r.id} );
+				r.className += ' t'+(Math.floor(Math.random()*1000)%5+1);
+				r.notEmpty = true;
+				i = ( Math.floor(j/4)+1)*4+Math.floor(Math.random()*1000 )%4;
+			}else{
+				r.notEmpty = false;
+			}
+		}
+		if( loop ){
+			box.style.webkitTransitionDuration = '0ms';
+			box.style.display          = 'none';
+			box.y                      = -blockSize*(Math.floor(box.children.length/4)+(offset||0))*loop;
+			setTimeout(function(){
+				box.style[transform] = 'translate3D(0,'+box.y+'px,0)';
+				setTimeout( function(){
+					box.style.display     = 'block';
+				}, 100 );
+			}, 200 );
+		} else {
+			box.y = 0;
+			box.style[transform] = 'translate3D(0,'+box.y+'px,0)';
+		}
+		box.style[transitionDuration] = '150ms';
+	}
+	function gameLayerMoveNextRow(){
+		for(var i=0; i<GameLayer.length; i++){
+			var g = GameLayer[i];
+			g.y += blockSize;
+			if( g.y > blockSize*(Math.floor(g.children.length/4)) ){
+				refreshGameLayer(g, 1, -1);
+			}else{
+				g.style[transform] = 'translate3D(0,'+g.y+'px,0)';
+			}
+		}
+	}
+	function gameTapEvent(e){
+		if (_gameOver) {
+			return false;
+		}
+		var tar = e.target;
+		var y = e.clientY || e.targetTouches[0].clientY,
+			x = (e.clientX || e.targetTouches[0].clientX)-body.offsetLeft,
+			p = _gameBBList[_gameBBListIndex];
+		if ( y > touchArea[0] || y < touchArea[1] ) {
+			return false;
+		}
+		if( (p.id==tar.id&&tar.notEmpty) || (p.cell==0&&x<blockSize) || (p.cell==1&&x>blockSize&&x<2*blockSize) || (p.cell==2&&x>2*blockSize&&x<3*blockSize) || (p.cell==3&&x>3*blockSize) ){
+			if( !_gameStart ){
+				gameStart();
+			}
+        	createjs.Sound.play("tap");
+			tar = document.getElementById(p.id);
+			tar.className = tar.className.replace(_ttreg, ' tt$1');
+			_gameBBListIndex++;
+			_gameScore ++; 
+			gameLayerMoveNextRow();
+		}else if( _gameStart && !tar.notEmpty ){
+			createjs.Sound.play("err");
+			gameOver();
+			tar.className += ' bad';
+		}
+		return false;
+	}
+	function createGameLayer(){
+		var html = '<div id="GameLayerBG">';
+		for(var i=1; i<=2; i++){
+			var id = 'GameLayer'+i;
+			html += '<div id="'+id+'" class="GameLayer">';
+			for(var j=0; j<10; j++ ){
+				for(var k=0; k<4; k++){
+					html += '<div id="'+id+'-'+(k+j*4)+'" num="'+(k+j*4)+'" class="block'+(k?' bl':'')+'"></div>';
+				}
+			}
+			html += '</div>';
+		}
+		html += '</div>';
+
+		html += '<div id="GameTimeLayer"></div>';
+
+		return html;
+	}
+	function closeWelcomeLayer(){
+		var l = document.getElementById('welcome');
+		l.style.display = 'none';
+	}
+	function showWelcomeLayer(){
+		var l = document.getElementById('welcome');
+		l.style.display = 'block';
+	}		function showFialMsg(){		var l = document.getElementById('fail');		l.style.display = 'block';	}
+	//游戏结果弹窗
+	function showGameScoreLayer(){
+		
+		var l = document.getElementById('GameScoreLayer');
+		var c = document.getElementById(_gameBBList[_gameBBListIndex-1].id).className.match(_ttreg)[1];
+		l.className = l.className.replace(/bgc\d/, 'bgc'+c);
+		
+		var bast = cookie('bast-score');
+		if( !bast || _gameScore > bast ){
+			bast = _gameScore;
+			cookie('bast-score', bast, 100);
+		}
+		if(_gameScore>100){				
+			document.getElementById('GameScoreLayer-bast').innerHTML = '恭喜您！抢到<span class="col_f30">'+_gameScore+'</span>个“福”，获得一个红包，快打开看是什么奖品吧！';			$("#closea").hide();
+			$(".pic_red").show();
+		}else{
+			document.getElementById('GameScoreLayer-bast').innerHTML = '<p style="padding:5% 0">很遗憾！您只抢到<span class="col_f30">'+_gameScore+'个</span>“福”，红包与您擦肩而过！没关系！<br/>小沃已为您送上1小时提速时间的安慰奖！</p>';
+			$(".pic_red").hide();
+			//发送安慰奖
+			getJionGift();
+		}
+		
+		l.style.visibility = 'visible';
+		window.shareData.tTitle = '一共捡了'+_gameScore+'个元宝，这是要完美逆袭的节奏吗？赶紧通知小伙伴一起来捡元宝吧！'
+		
+		popMarginTop();
+		$(".pic_red").click(function(){
+			getGift();
+			$(".red_txt").show();
+			$(".GameScoreText").hide();
+		}); 
+	}
+	
+	
+	function hideGameScoreLayer(){
+		var l = document.getElementById('GameScoreLayer');
+		l.style.display = 'none';
+	}
+	function replayBtn(){
+		gameRestart();
+		hideGameScoreLayer();
+	}
+	function backBtn(){
+		gameRestart();
+		hideGameScoreLayer();
+		showWelcomeLayer();
+	}
+	
+	
+	function toStr(obj) {
+		if ( typeof obj == 'object' ) {
+			return JSON.stringify(obj);
+		} else {
+			return obj;
+		}
+		return '';
+	}
+	function cookie(name, value, time) {
+		if (name) {
+			if (value) {
+				if (time) {
+					var date = new Date();
+					date.setTime(date.getTime() + 864e5 * time), time = date.toGMTString();
+				}
+				return document.cookie = name + "=" + escape(toStr(value)) + (time ? "; expires=" + time + (arguments[3] ? "; domain=" + arguments[3] + (arguments[4] ? "; path=" + arguments[4] + (arguments[5] ? "; secure" : "") : "") : "") : ""), !0;
+			}
+			return value = document.cookie.match("(?:^|;)\\s*" + name.replace(/([-.*+?^${}()|[\]\/\\])/g, "\\$1") + "=([^;]*)"), value = value && "string" == typeof value[1] ? unescape(value[1]) : !1, (/^(\{|\[).+\}|\]$/.test(value) || /^[0-9]+$/g.test(value)) && eval("value=" + value), value;
+		}
+		var data = {};
+		value = document.cookie.replace(/\s/g, "").split(";");
+		for (var i = 0; value.length > i; i++) name = value[i].split("="), name[1] && (data[name[0]] = unescape(name[1]));
+		return data;
+	}
+	document.write(createGameLayer());	
+
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	    
+	    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+	        WeixinJSBridge.invoke('sendAppMessage', {
+	            "img_url": window.shareData.imgUrl,
+	            "link": window.shareData.timeLineLink,
+	            "desc": window.shareData.tContent,
+	            "title": window.shareData.tTitle
+	        }, function(res) {
+	        	document.location.href = mebtnopenurl;
+	        })
+	    });
+
+	    WeixinJSBridge.on('menu:share:timeline', function(argv) {
+	        WeixinJSBridge.invoke('shareTimeline', {
+	            "img_url": window.shareData.imgUrl,
+	            "img_width": "640",
+	            "img_height": "640",
+	            "link": window.shareData.timeLineLink,
+	            "desc": window.shareData.tContent,
+	            "title": window.shareData.tTitle
+	        }, function(res) {
+	        	document.location.href = mebtnopenurl;
+	        });
+	    });
+	}, false);
+	
+</script>
+
+	<div id="GameScoreLayer" class="BBOX SHADE bgc1" style="visibility:hidden; ">
+        <div class="pop_body">
+            <div class="txt_pop">
+            <a id="closea" href="javascript:void(0);" onclick="backIndexPgae()" class="btn_close"><img src="../images/btn_close.png" width="100%"></a>          		
+                <div class="GameScoreText">
+                    <div id="GameScoreLayer-bast"></div>
+                    <a href="javascript:void(0)" class="pic_red"><img src="../images/pic_red.jpg" width="100%"></a>
+                </div>
+                <!--未得到红包显示-->
+                <!--<div id="GameScoreLayer-bast">
+                    <p style="padding:5% 0">很遗憾！您只抢到<span class="col_f30">XX个</span>“福”，红包与您擦肩而过！没关系！</p>
+                    小沃已为您送上1小时提速时间的安慰奖！
+                </div>-->
+                
+                 <div id="red_txt" class="red_txt" >
+                    <!-- 恭喜您获<span class="col_f30">100分钟</span>提速时间
+                    <a href="../index.jsp" class="btn_sure_01"><img src="../images/btn_sure.png" width="100%"></a> -->
+                </div>
+            </div>
+        </div>
+	</div>
+
+	<div id="welcome" class="SHADE BOX-M" >
+    	<div class="welcome-bg FILL"></div>
+        <div class="FILL BOX-M game_star" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:5;">            
+            <div style="margin:-20% 4% 0 9%;" >            		
+                <div style="font-size:2.6em; color:#FEF002;">你的手有多快？</div><br/>
+                <div style="font-size:1.6em; color:#fff; line-height:1.5em; text-align:left; font-weight:normal;">游戏规则：<br>
+        从最下面的"倒福"开始点击，20秒内看你能捡多少个“倒福”。<p >奖励规则：<br>
+        1、准确点击“倒福”图标，累计获得100个，即可获得一个红包；<br>
+        2、未获得100个“倒福”图标；或在游戏期间点击到非“倒福”图标游戏结束。用户仅可获1小时提速时间的安慰奖励。</p></div>
+                <div id="ready-btn" class="btn loading" style="display:inline-block; margin:0 auto; width:10em; height:1.7em; line-height:1.7em; font-size:2.2em; color:#fff; border-radius:0.5em; margin-top:3%"></div>			
+            <a href="javascript:void(0);" onclick="backIndexPgae()" class="btn_back" >返回</a>	            
+        </div>			 
+        </div>
+    </div>		<div id="fail" style="display:none;" >      	<span class="col_f30">您的挑战次数已经用完</span>         <a onclick="window.location.replace('index.jsp')" class="btn_sure_01"><img src="../images/btn_sure.png" width="100%"></a>     </div>	
+
+	<div id="landscape" class="SHADE BOX-M" style="background:rgba(0,0,0,.9);">
+		<div class="welcome-bg FILL"></div> 
+		<div id="landscape-text" style="color:#fff;font-size:3em;">请竖屏玩耍</div>
+	</div>
+	
+<script type="text/javascript">
+	if (isDesktop)          
+		document.write('</div>');
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+/* CSS Document */
+*{ margin:0; padding:0; box-sizing:border-box;}
+img{ border:0px;  vertical-align:middle;}
+body{ text-align:left; margin-left:auto; margin-right:auto; background:#590179; font-family:"microsoft YaHei",Arial, Helvetica, sans-serif;}
+body,html{ width:100%; height:100%;  margin:auto; }
+ul,dl{ list-style:none; text-align:left; margin:0px; padding:0px; }
+a{ text-decoration:none;}
+.clearfix:after{content:"\20"; display:block; height:0; clear:both;}
+.clearfix{*zoom:1; _zoom:1}
+
+.btn_share{ position:fixed; right:2%; top:5%; background:#FFF; opacity:0.9; color:#e31e32; border-radius:5em; padding:0.5% 3%; font-size:1.3em;}
+
+.hd_gz{ display:inline-block; width:9%; font-size:1.3em; text-align:center; color:#4c0068; background:#fbece5; position:fixed; right:0; top:26%; line-height:1em; padding:2% 2%; border-radius:0.4em 0 0 0.4em;}
+
+.pop{ visibility:hidden; position:fixed; left:0; top:0; bottom:0; width:100%; background:url(../images/pop_bg.png) repeat left top; z-index:100;}
+.pop_body{ position:absolute; left:4%; width:92%; top:50%;}
+
+.con_body{ background:url(../images/gz_b.png) no-repeat left bottom; background-size:100%; position:relative; padding-bottom:8%;}
+.con_body h3{ text-align:center; color:#FFF; font-size:1.8em; margin-top:9%;}
+.btn_close,.btn_close_01{ display:inline-block; width:8%; position:absolute; right:0; top:-2%}
+.gz_content{ background:url(../images/gz_c.png) repeat left top; background-size:100%; padding:0 3%;}
+.txt_01{ padding:0 5%; color:#272727; font-size:1.4em; line-height:1.5em;}
+.gz_cont{ width:100%; margin:auto; height:20em;  overflow:hidden; overflow-y:auto;}
+.gz_cont p{ padding:0 5% 2% 5%; color:#200a00; font-size:1.4em; line-height:1.5em;}
+
+
+
+/*record*/
+.rec_tab th{border-bottom:1px solid #cfcfcf; background:#f0f0f0; text-align:center; font-weight:normal; color:#2f2f2f; font-size:1.6em; padding:5% 0;}
+.rec_tab td{border-bottom:1px solid #cfcfcf; background:#fff; text-align:center; color:#2f2f2f; font-size:1.5em; padding:5% 0;}
+.rec_tab .time{ color:#7e7e7e; font-size:0.9em;} 
+
+.rec_none{ background:#eeeeee;}
+.rec_none td{ text-align:center; font-size:1.5em; color:#b2b2b2; }
+.rec_none img{ margin-bottom:8%}
+
+.btn_pwd{ color:#f7283c; text-decoration:underline; font-size:0.9em; margin-left:10%;}
+
+.btn_back{ display:inline-block; width:100%; position:fixed; left:0; bottom:0; background:#f5f5f5; border-top:1px solid #dfdfdf; color:#a4190c; font-size:1.6em; text-align:center; padding:3% 0; z-index:5}
+.btn_cz{ width:100%; text-align:center;}
+.btn_sure{ display:inline-block; width:40%; background:#f5283b; border-radius:0.6em; color:#FFF; font-size:1.6em; padding:1% 0; margin-top:5%; border-bottom:0.25em solid #ce1f2b;}
+.bor_line{ display:inline-block; width:94%; padding:2% 0;  border-radius:0.4em; border:0.08em dashed #FFFFFF;}
+
+
+.pwd_body{ width:90%; height:14em;   border:0.08em solid #F00; background:#FFF; border-radius:0.6em; padding-top:3% ; }
+.pwd_body .txt_04{color:#272727; font-size:1.5em; padding:3% 0 0 10%;}
+
+/*loading*/
+.load{ position:fixed; width:100%; height:100%; text-align:center; left:0; top:0;background:#111;opacity:0.8;filter:alpha(opacity=80); z-index:100}
+.load_pic{ width:25%; position:relative; margin:auto; margin-top:58%;}
+.load_txt{ position:absolute; left:0; top:0; width:100%;}
+.animationRotate{ animation:rotateRun infinite 1s linear; -webkit-animation:rotateRun infinite 1s linear; -moz-animation:rotateRun infinite 1s linear;}
+@keyframes rotateRun{
+	0%{ transform:rotate(0deg);}	
+	100%{ transform:rotate(360deg)}
+}
+@-webkit-keyframes rotateRun{
+	0%{ -webkit-transform:rotate(0deg);}	
+	100%{ -webkit-transform:rotate(360deg)}
+}
+@-moz-keyframes rotateRun{
+	0%{ -moz-transform:rotate(0deg);}	
+	100%{ -moz-transform:rotate(360deg)}
+}
+
+.share_friend{ display:inline-block; width:80%; background:#f5283b; border-radius:0.6em; color:#FFF; font-size:1.3em; padding:1% 0; margin-top:5%; border-bottom:0.25em solid #ce1f2b;}
+
+.i_btm{ width:100%; text-align:center; padding-bottom:8%;}
+.game_num{ color:#FFF; font-size:1.8em; margin-bottom:2%;}
+.col_fee{ color:#fee605;}
+
+.btn_game,.btn_record{ display:inline-block; width:60%; margin-top:4%;}
+
+.txt_pop{ background:url(../images/txt_pop.png) no-repeat left top; background-size:100% 100%; padding:8%; text-align:center; position:relative;}
+.txt_02{ text-align:center; font-size:1.3em; color:#200a00;}
+.btn_sure_01{ display:inline-block; width:52%; margin-top:8%;}
+.btn_close_01{ top:-18%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

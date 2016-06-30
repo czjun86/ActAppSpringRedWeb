@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+<location>E:/Jars</location>
+<remote>http://192.168.10.15:8081/nexus/content/groups/public/</remote>
+<outPut>/bin</outPut>
+<projectName>四川天府贷 注册账号送礼品活动</projectName>
+<svnLocation>http://192.168.0.6/svn/DDB/Activity/src_v2/ActTFDWeb</svnLocation>
+<url>http://127.0.0.1/DDBActivityRollete/index.html</url>
+<folders>
+	<folder>
+		<name>src</name>
+		<exported>true</exported>
+		<deploypath>/WEB-INF/classes</deploypath>
+		<sourceFolder>true</sourceFolder>
+	</folder>
+	<folder>
+		<name>config</name>
+		<exported>true</exported>
+		<deploypath>/WEB-INF/classes</deploypath>
+		<sourceFolder>true</sourceFolder>
+	</folder>
+	<folder>
+		<name>WebContent</name>
+		<exported>true</exported>
+		<deploypath>/</deploypath>
+		<sourceFolder>false</sourceFolder>
+	</folder>
+</folders>
+<containers>
+	<container>
+		<path>org.eclipse.jdt.launching.JRE_CONTAINER</path>
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+		<exported>false</exported>
+	</container>
+	<container>
+		<path>org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0</path>
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.utility"/>
+		</attributes>
+		<exported>false</exported>
+	</container>
+	<container>
+		<path>org.eclipse.jdt.junit.JUNIT_CONTAINER/4</path>
+		<exported>false</exported>
+	</container>
+</containers>
+
+<jars>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId> 
+			<version>1.1.28</version>
+			<exported>true</exported>
+			<desc>阿里巴巴处理json</desc>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId> 
+			<artifactId>jstl</artifactId> 
+			<version>1.2</version>
+			<exported>true</exported>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId> 
+			<artifactId>log4j</artifactId> 
+			<version>1.2.17</version>
+			<exported>true</exported>
+			<desc>log4j</desc>
+		</dependency>
+		<dependency>
+		  <groupId>mysql</groupId> 
+		  <artifactId>mysql-connector-java</artifactId> 
+		  <version>5.1.22</version>
+		  <exported>true</exported>
+		  <desc>jdbc mysql </desc>
+		</dependency>
+		<dependency>
+		  <groupId>org.apache.taglibs</groupId>
+		  <artifactId>taglibs-standard-spec</artifactId>
+		  <version>1.2.1</version>
+		  <exported>true</exported>
+		  <desc>标签库</desc>
+		</dependency> 
+		<dependency> 
+		  <groupId>xmlpull</groupId>
+		  <artifactId>xmlpull</artifactId>
+		  <version>1.1.3.1</version>
+		  <exported>true</exported>
+		  <desc>xml转对象</desc>
+		</dependency>
+		<dependency>
+		  <groupId>xpp3</groupId>
+		  <artifactId>xpp3_min</artifactId>
+		  <version>1.1.4c</version>
+		  <exported>true</exported>
+		  <desc>xml转对象</desc>
+		</dependency>
+		<dependency>
+		  <groupId>com.thoughtworks.xstream</groupId>
+		  <artifactId>xstream</artifactId>  
+		  <version>1.4.4</version>
+		  <exported>true</exported>
+		  <desc>xml转对象</desc>
+		</dependency>
+		<dependency>
+		  <groupId>DDB.Util</groupId>
+		  <artifactId>DDB.Util</artifactId>  
+		  <version>1.0</version>
+		  <exported>true</exported>
+		  <desc>ddb 工具类</desc>
+		</dependency>
+		<!-- 现有的common对象 -->
+		<dependency>
+		  <groupId>kkd.util</groupId>
+		  <artifactId>KKDUtil</artifactId>  
+		  <version>1.0</version>
+		  <exported>true</exported>
+		  <desc>快快点 常用工具箱</desc>
+		</dependency>
+		<dependency>
+		  <groupId>activityBasis.wangding</groupId>
+		  <artifactId>wangding-activityBasis</artifactId>
+		  <version>1.4</version>
+		  <exported>true</exported>
+		</dependency>
+		<dependency>
+		  <groupId>DDB.Util</groupId>
+		  <artifactId>sorcom.utility</artifactId>
+		  <version>1.0</version>
+		  <exported>true</exported>
+		</dependency>
+		<dependency>
+		  <groupId>DDB.Util</groupId>
+		  <artifactId>ddb.dbutil</artifactId>  
+		  <version>1.0</version>
+		  <exported>true</exported>
+		  <desc>ddb dao工具类</desc>
+		</dependency>
+		<dependency>   
+		  <groupId>dom4j</groupId>
+		  <artifactId>dom4j</artifactId>
+		  <version>1.6</version>
+		  <exported>true</exported>
+		</dependency> 
+		<dependency>
+		  <groupId>DDB.speedup</groupId>
+		  <artifactId>SpeedupCommon</artifactId>
+		  <version>1.0</version>
+		  <exported>true</exported>
+		</dependency>
+		<dependency>
+		  <groupId>commons-net</groupId>
+		  <artifactId>commons-net</artifactId>
+		  <version>3.1</version>
+		  <exported>true</exported>
+		</dependency>
+		
+		<!-- 原项目已有包 Start-->
+		<dependency>
+		  <groupId>commons-fileupload</groupId>
+		  <artifactId>commons-fileupload</artifactId>
+		  <version>1.3.1</version>
+		  <exported>true</exported>
+		</dependency>
+		
+		<dependency>
+		  <groupId>DDB</groupId>
+		  <artifactId>ddb.ajax</artifactId>
+		  <version>1.0</version>
+		  <exported>true</exported>
+		</dependency>
+		
+		<dependency>
+		  <groupId>DDB</groupId>
+		  <artifactId>ddb.efficiency</artifactId>
+		  <version>1.0</version>
+		  <exported>true</exported>
+		</dependency>
+				
+		<dependency>
+		  <groupId>DDB.sso</groupId>
+		  <artifactId>sso</artifactId>
+		  <version>1.0</version>
+		  <exported>true</exported>
+		</dependency>
+		
+		<dependency>
+		  <groupId>jaxen</groupId>
+		  <artifactId>jaxen</artifactId>
+		  <version>1.1-beta-6</version>
+		  <exported>true</exported>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jettison</groupId> 
+			<artifactId>jettison</artifactId>
+			<version>1.2</version>
+			<exported>true</exported>
+		</dependency> 		
+<!-- 		<dependency> -->
+<!-- 		  <groupId>DDB.Util</groupId> -->
+<!-- 		  <artifactId>DDBInfUtil</artifactId> -->
+<!-- 		  <version>1.0</version> -->
+<!-- 		  <exported>true</exported> -->
+<!-- 		</dependency> -->
+		
+		<!-- 原项目已有包 End-->
+		
+</jars>
+<!-- 
+<projects>
+	<project>
+		<proName>DDBActivtyBase</proName> 
+		<exported>true</exported>
+		<RuntimePath>/WEB-INF/lib</RuntimePath>
+	</project>
+</projects>
+ -->
+</project>

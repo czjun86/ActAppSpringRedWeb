@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pubApps>
+	<pubApp>
+		<appId>wyl</appId>
+		<appKey>ssp1fwyl</appKey>
+		<appName>网优力</appName>
+	</pubApp>
+	<pubApp>
+		<appId>wdkjnet</appId>
+		<appKey>ssp11net</appKey>
+		<appName>沃助手</appName>
+	</pubApp>
+	<pubApp>
+		<appId>xunlei</appId>
+		<appKey>ssp22fxl</appKey>
+		<appName>迅雷</appName>
+	</pubApp>
+	<pubApp>
+		<appId>wdkj</appId>
+		<appKey>ssp8wdkj</appKey>
+		<appName>网丁</appName>
+	</pubApp>
+	<pubApp>
+		<appId>wdkj_ios</appId>
+		<appKey>ssp41ios</appKey>
+		<appName>全国应用ios</appName>
+	</pubApp>
+	<pubApp>
+		<appId>wdkj_android</appId>
+		<appKey>ssp42and</appKey>
+		<appName>全国应用android</appName>
+	</pubApp>
+	<pubApp>
+		<appId>gf_android</appId>
+		<appKey>ssp4gf3a</appKey>
+		<appName>冠方盒子应用</appName>
+	</pubApp>
+	<pubApp>
+		<appId>tc_js</appId>
+		<appKey>00bjs@7c</appKey>
+		<appName>江苏海淘</appName>
+	</pubApp>
+</pubApps>
